@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<section class="main">
+    <div class="row">
+        <div class="col-sm-4">
+            <a href="@Url.Action("Index", "Admins")"><img class="img1" src="~/Image/GardenIcon2.png" alt="Админка" width="300" /></a>
+            <br />
+            <p>Админка</p>
+        </div>
+        <div class="col-sm-4">
+            <a href="@Url.Action("Application", "Home")"><img class="img2" src="~/Image/KitchenGardenIcon2.png" alt="Приложение" width="300" /></a>
+            <p>Приложение</p>
+            <br />
+        </div>
+        <div class="col-sm-4">
+            <a href="@Url.Action("Guide", "Home")"><img class="img3" src="~/Image/GreenHouseIcon2.png" alt="Справочник" width="300" /></a>
+            <p>Справочник</p>
+            <br />
+        </div>
+    </div>
+</section>
+<section class="news">
+    <h2>Новости</h2>
+</section>
+<section class="contacts">
+    <h2>Контакты</h2>
+</section>

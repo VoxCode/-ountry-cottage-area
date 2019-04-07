@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Сountry_cottage_area.Models.AgricultureType>
+
+<div class="guideParent">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="guideToolList">
+                <h3>Овощи</h3>
+                <div class="vegetables">
+
+                    @foreach (var item in Model.Where(p => p.AgriCategory == "vegetables"))
+                    {
+                        <a href="#" id="@Html.DisplayFor(modelItem => item.Index)">@Html.DisplayFor(modelItem => item.Name)</a>
+                    }
+                </div>
+                <h3>Зелень</h3>
+                <div class="fruits">
+                    @foreach (var item in Model.Where(p => p.AgriCategory == "greenery"))
+                    {
+                        <a href="#" id="@Html.DisplayFor(modelItem => item.Index)">@Html.DisplayFor(modelItem => item.Name)</a>
+                    }
+                </div>
+                <h3>Ягоды</h3>
+                <div class="fruits">
+                    @foreach (var item in Model.Where(p => p.AgriCategory == "berries"))
+                    {
+                        <a href="#" id="@Html.DisplayFor(modelItem => item.Index)">@Html.DisplayFor(modelItem => item.Name)</a>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="guideToolContent"><h2>Пожалуйста, выберите необходимую культуру!</h2></div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+
+    <script>
+
+        function makeRequestAjax(id) {
+            $.ajax({
+                url: "@Url.Action("GetGuide")",                
+                type: "GET",
+                data: "id=" + id,
+                success: function (response) {
+                    $(".guideToolContent").text(response);
+                },
+                error: function () {
+                    alert("Ошибка! Неопределенный Id " + id);
+                }
+            });
+        }
+    </script>
+}

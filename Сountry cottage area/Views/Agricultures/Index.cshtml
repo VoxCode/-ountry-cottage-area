@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Сountry_cottage_area.Models.Agriculture>
+
+@{
+    ViewBag.Title = "Растущие в текущий момент культуры";
+}
+
+<h2>Растущие в текущий момент культуры</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            <p>Сорт культуры</p>
+        </th>
+        <th>
+            <p>Идентификатор культуры</p>
+        </th>
+        <th>
+            <p>Число разделяющее одинаковые культуры</p>
+        </th>
+        <th>
+            <p>Дата посадки</p>
+        </th>
+        <th>
+            <p>Идентификатор участка</p>
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Variable)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AgricultureIndex)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AgricultureNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AreaId)
+        </td>      
+    </tr>
+}
+</table>

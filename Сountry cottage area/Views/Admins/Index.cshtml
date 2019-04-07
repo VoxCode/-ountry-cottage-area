@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "Панель аминистратора";
+}
+
+<h2 class="adminPanel" >Панель администратора</h2>
+<div class="container">
+    <table class="table table-bordered">
+        <tr>
+            <td>
+                @Html.ActionLink("Справочник культур", "Index", "AgricultureTypes")          
+            </td>
+            <td>
+               
+                @Html.ActionLink("Справочник несовместимости культур", "Index", "IncompatibleAgricultures") 
+            </td>
+            <td>
+                @Html.ActionLink("Растущие в текущий момент культуры", "Index", "Agricultures")
+            </td>
+        </tr>
+    </table>
+
+</div>
+

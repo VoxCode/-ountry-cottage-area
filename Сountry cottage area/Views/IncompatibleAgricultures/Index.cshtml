@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Сountry_cottage_area.Models.IncompatibleAgriculture>
+
+@{
+    ViewBag.Title = "Справочник несовместимости культур";
+}
+
+<h2>Справочник несовместимости культур</h2>
+
+<p>
+    @Html.ActionLink("Создать новое правило", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            <p>Назавние первой культуры</p>
+        </th>
+        <th>
+            <p>СSS класс второй культуры в формате: square squareExample + идентификатор</p>
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AgricultureType.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AgricultureName)
+        </td>
+        <td>
+            @Html.ActionLink("Редактирование", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Удаление", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

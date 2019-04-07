@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Сountry_cottage_area.Models.AgricultureType>
+
+@{
+    ViewBag.Title = "Справочник культур";
+}
+
+<h2>Справочник культур</h2>
+
+<p>
+    @Html.ActionLink("Добавить новую культуру", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            <p>Название новой кульруты</p>
+        </th>
+        <th>
+            <p>Категория культуры</p>
+        </th>
+        <th>
+            <p>Идентификатор культуры</p>
+        </th>
+        <th>
+            <p>Описание культуры</p>
+        </th>
+        <th>
+            <p>Css класс культуры используемый в приложении</p>
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AgriCategory)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Index)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Content)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AgricultureAppClass)
+        </td>
+        <td>
+            @Html.ActionLink("Редактировать", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Удалить", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,990 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/*Burger-button*/
+
+.menu-btn {
+    display: block;
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    border-radius: 10%;
+    position: absolute;
+    right: -55px;
+    top: 10px;
+}
+
+    .menu-btn:hover {
+        border: 1px solid black;
+    }
+
+    .menu-btn span,
+    .menu-btn span::before,
+    .menu-btn span::after {
+        position: absolute;
+        top: 50%;
+        margin-top: -1px;
+        left: 50%;
+        margin-left: -10px;
+        width: 20px;
+        height: 2px;
+        background-color: #222;
+    }
+
+        .menu-btn span::before,
+        .menu-btn span::after {
+            content: '';
+            display: block;
+            transition: 0.5s;
+        }
+
+        .menu-btn span::before {
+            transform: translateY(-5px);
+        }
+
+        .menu-btn span::after {
+            transform: translateY(+5px);
+        }
+
+.menu-btn_active span::before {
+    transform: rotate(40deg);
+    width: 10px;
+    transform-origin: left bottom;
+}
+
+.menu-btn_active span::after {
+    transform: rotate(-40deg);
+    width: 10px;
+    transform-origin: left top;
+}
+
+/*Main page*/
+
+section {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.main {
+    background-image: url(../Image/agriculture-background-bright.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-top: -60px;
+}
+
+    .main p {
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: xx-large;
+        color: white;
+        text-align: center;
+    }
+
+    .main img {
+        border-radius: 50%;
+        transition: 0.5s;
+        opacity: 0.9;
+    }
+
+        .main img:hover {
+            transform: scale(1.2) translateY(-5%);
+            opacity: 1;
+        }
+
+.news {
+    background-color: darkslateblue;
+}
+
+.contacts {
+    background-color: mediumpurple;
+}
+
+/*Wrapper*/
+
+.wrapper {
+    position: relative;
+    overflow-x: hidden;
+}
+
+/*Left-Slide menu*/
+
+.menu {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 99;
+    width: 300px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    transition: 0.5s;
+    transform: translateX(-100%);
+    opacity: 0.9;
+}
+
+.menu_active {
+    transform: translateX(0%);
+}
+
+.menu-list {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 50%;
+    flex-direction: column;
+}
+
+    .menu-list a {
+        text-decoration: none;
+        text-transform: uppercase;
+        font-weight: 900;
+        color: black;
+    }
+
+        .menu-list a:hover {
+            transition: 1s;
+            transform: scale(1.3);
+        }
+
+    .menu-list div {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-direction: column;
+    }
+
+        .menu-list div p {
+            color: green;
+            text-align: center;
+            font-size: large;
+        }
+
+        .menu-list div a {
+            color: green;
+        }
+
+    .menu-list form:hover {
+        transition: 1s;
+        transform: scale(1.3);
+    }
+
+.content {
+    transition: 0.5s;
+    position: relative;
+    padding-top: 60px;
+}
+
+.content_active {
+    transform: translateX(0%);
+}
+
+
+/*Application*/
+
+.appParent {
+    background-color: grey;
+    padding-top: 8px;
+}
+
+.appMap div {
+    width: 50px;
+    height: 50px;
+    margin-top: -6px;
+    display: inline-block;
+}
+
+    .appMap div:hover {
+        border: 4px solid black;
+    }
+
+.appMap {
+    padding: 0;
+    overflow-x: scroll;
+    white-space: nowrap;
+}
+
+.appMap_active {
+    margin-right: 0;
+}
+
+/*Context-menu*/
+
+.context-menu {
+    position: absolute;
+    display: none;
+    background-color: #fff;
+    border: 2px solid #333;
+    box-shadow: -5px 2px 10px rgba(0,0,0,0.5);
+    opacity: 0.95;
+}
+
+    .context-menu ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+        .context-menu ul li {
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+            display: block;
+        }
+
+            .context-menu ul li a {
+                color: black;
+                text-decoration: none;
+                display: block;
+                padding: 15px;
+            }
+
+                .context-menu ul li a:hover {
+                    background-color: lightgray;
+                }
+
+/*Zoom*/
+
+.zoomDiv {
+    height: 64px;
+    position: absolute;
+    right: 10px;
+    top: 4px;
+}
+
+.zoom {
+    height: 40px;
+    margin: 7px;
+    padding: 1px;
+    opacity: 0.8;
+}
+
+    .zoom:hover {
+        transform: scale(1.5);
+        transition: 0.5s;
+        opacity: 0.9;
+        cursor: pointer;
+    }
+
+/*Save project button*/
+
+#addArr {
+    margin-left: 380px;
+}
+
+/*Planning Stages Panel Button*/
+
+#planningStagePanelButton {
+    position: absolute;
+    right: 10%;
+}
+
+/*Planning Stages Panel*/
+
+.planningStagePanel {
+    z-index: 60;
+    position: fixed;
+    top: 80px;
+    right: 30%;
+    width: 400px;
+    height: 700px;
+    border: 2px solid black;
+    overflow-y: auto;
+    visibility: hidden;
+    opacity: 0.1;
+}
+
+.planningStagePanel_active {
+    background-color: white;
+    visibility: visible;
+    opacity: 0.9;
+}
+
+#addNewStage {
+    position: relative;
+    margin: 30px;
+}
+
+    #addNewStage button {
+        position: relative;
+        margin-left: 65px;    
+    }
+
+.planningStagesList {
+    position: relative;
+    left: 0;
+}
+
+    .planningStagesList div {
+        border: 2px solid black;
+        width: 380px;
+        margin: 10px;
+        padding: 5px;
+        border-radius: 10px 10px;
+    }
+
+        .planningStagesList div a {
+            text-decoration: none;
+            color: black;
+            font-size: large;
+            position: relative;
+            left: 100px;
+        }
+
+        .planningStagesList div:hover {
+            background-color: lightgray;
+        }
+
+/*Stages mode swich*/
+
+.swichStagesMode {
+    z-index: 91;
+    position: fixed;
+    top: 75px;
+    left: 300px;
+    width: 270px;
+    height: 60px;
+    border: 2px solid black;
+    border-radius: 10px 10px;
+    background-color: white;
+    opacity: 0.8;
+}
+
+    .swichStagesMode span, button {
+        margin: 10px;
+    }
+/*Right Tool Panel*/
+
+.toolPanel {
+    z-index: 60;
+    position: fixed;
+    height: 100vh;
+    top: 70px;
+    width: 20%;
+    background-color: white;
+    right: -20%;
+    opacity: 0.97;
+    padding: 8px;
+    box-shadow: -15px 12px 20px rgba(0,0,0,0.7);
+    transition: 0.5s;
+}
+
+.toolPanel_active {
+    right: 0;
+    transition: 0.5s;
+}
+
+.tool-Btn {
+    width: 60px;
+    top: 47%;
+    opacity: 0.9;
+    position: fixed;
+    right: 2%;
+}
+
+.tool-Btn_active {
+    right: 22%;
+}
+
+.toolBtn {
+    width: 60px;
+}
+
+    .toolBtn:hover {
+        transform: scale(1.3);
+        cursor: pointer;
+    }
+
+
+.toolBtn_active {
+    transform: scaleX(-1);
+    position: absolute;
+}
+
+    .toolBtn_active:hover {
+        transform: scale(-1.3);
+        cursor: pointer;
+    }
+
+.toolPanel p {
+    width: 93px;
+    top: 100%;
+    left: -50%;
+    display: inline-block;
+    position: relative;
+    color: black;
+    text-align: center;
+}
+
+.textures {
+    margin: 0;
+}
+
+    .textures h3 {
+        background-color: forestgreen;
+        border-radius: 5px 5px 0 0;
+        margin: 10px 0 0 0;
+        color: white;
+        font-size: 20px;
+        padding: 5px;
+        text-align: center;
+        box-shadow: 5px 5px 10px rgba(0,0,0,0.7);
+    }
+
+        .textures h3:hover {
+            cursor: pointer;
+            background-color: darkblue;
+        }
+
+.appLandscape {
+    margin: 2px;
+    overflow-y: scroll;
+    height: 500px;
+}
+
+.appTools {
+    margin: 2px;
+    overflow-y: scroll;
+    height: 200px;
+}
+
+.appAgricultures {
+    margin: 2px;
+    overflow-y: scroll;
+    height: 1000px;
+}
+
+.appLandscape div {
+    width: 50px;
+    height: 50px;
+    margin: 30px;
+    margin-bottom: 40px;
+    display: inline-block;
+    border: 2px solid black;
+    position: relative;
+    vertical-align: bottom;
+}
+
+    .appLandscape div:hover {
+        transform: scale(1.3);
+        cursor: pointer;
+    }
+
+.appTools div {
+    width: 50px;
+    height: 50px;
+    margin: 30px;
+    margin-bottom: 40px;
+    display: inline-block;
+    border: 2px solid black;
+    position: relative;
+    vertical-align: bottom;
+}
+
+    .appTools div:hover {
+        transform: scale(1.3);
+        cursor: pointer;
+    }
+
+.appAgricultures div {
+    width: 50px;
+    height: 50px;
+    margin: 30px;
+    margin-bottom: 40px;
+    display: inline-block;
+    border: 2px solid black;
+    position: relative;
+    vertical-align: bottom;
+}
+
+    .appAgricultures div:hover {
+        transform: scale(1.3);
+        cursor: pointer;
+    }
+
+/*App Toolbar*/
+
+.appToolbar {
+    top: 0;
+    width: 100%;
+    height: 70px;
+    padding: 5px;
+    background-color: white;
+    border-radius: 0 0 10px 10px;
+    box-shadow: -5px 22px 30px rgba(0,0,0,0.7);
+    position: fixed;
+    z-index: 90;
+}
+
+/*Agriculture save*/
+
+.agricultureSave {
+    padding: 20px;
+    margin: 30px;
+}
+
+/*Texture Info Pannel*/
+
+.textureInfoPannel {
+    bottom: 0;
+    left: -540px;
+    border: 2px solid black;
+    margin: 5px;
+    padding: 5px;
+    width: 500px;
+    height: 120px;
+    background-color: white;
+    border-radius: 10px 10px;
+    position: fixed;
+    opacity: 0.9;
+}
+
+    .textureInfoPannel div {
+        position: relative;
+        border: 2px solid black;
+        width: 50px;
+        height: 50px;
+        display: inline-block;
+        margin-left: 10px;
+        margin-right: 28px;
+    }
+
+    .textureInfoPannel input {
+        position: relative;
+        top: -9px;
+        margin-left: 10px;
+    }
+
+    .textureInfoPannel button {
+        position: relative;
+        margin-left: 10px;
+        margin-right: 0;
+        bottom: 5px;
+    }
+
+.textureInfoPannel_active {
+    left: 0;
+}
+
+.guideToolList {
+    position: relative;
+    display: inline-block;
+    margin: 10px;
+    left: 40%;
+    width: 60%;
+    height: 100vh;
+    border: 2px solid black;
+    padding: 15px;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.7);
+    border-radius: 15px 15px;
+}
+
+.guideToolContent {
+    position: relative;
+    display: inline-block;
+    margin: 10px;
+    width: 70%;
+    border: 2px solid black;
+    padding: 15px;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.7);
+    border-radius: 15px 15px;
+}
+
+.guideToolList h3 {
+    background-color: forestgreen;
+    border-radius: 5px 5px 0 0;
+    margin: 10px 0 0 0;
+    color: white;
+    font-size: 20px;
+    padding: 5px;
+    text-align: center;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.7);
+}
+
+    .guideToolList h3:hover {
+        cursor: pointer;
+        background-color: darkblue;
+    }
+
+.guideToolList a {
+    text-decoration: none;
+    display: block;
+    background-color: darkslategray;
+    border-radius: 5px 5px 0 0;
+    margin: 10px 0 0 0;
+    width: 70%;
+    color: white;
+    font-size: 20px;
+    padding: 5px;
+    text-align: center;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.7);
+}
+
+    .guideToolList a:hover {
+        cursor: pointer;
+        background-color: lightslategray;
+    }
+
+/*Delete choice window*/
+
+.delChoice {
+    position: absolute;
+    width: 250px;
+    height: 100px;
+    background-color: #fff;
+    border: 2px solid #333;
+    border-radius: 10px 10px;
+    opacity: 0.95;
+    padding: 5px;
+}
+
+    .delChoice p {
+        text-align: center;
+    }
+
+#delYes {
+    margin: 5px;
+    position: relative;
+    left: 10px;
+}
+
+#delNo {
+    margin: 5px;
+    position: relative;
+    left: 40px;
+}
+
+
+/*LastThreeYears*/
+.firstYear{
+    position:absolute;
+    left: 150%;
+}
+
+.secondYear {
+    position: absolute;
+    left: 150%;
+}
+
+.thirdYear {
+    position: absolute;
+    left: 150%;
+}
+
+
+.guideParent {
+    margin-top: -60px;
+}
+
+.adminPanel {
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+/*Textures*/
+
+.chosenItem {
+    background-color: white;
+    border: 1px solid black;
+}
+
+.moveArrow {
+    background-color: black;
+    border: 1px solid black;
+    opacity: 0.7;
+}
+
+.square, .squareEraser {
+    background-color: white;
+}
+
+.square_click, .square_click_Ex {
+    background-color: blue;
+    border: 1px solid black;
+    opacity: 0.7;
+}
+
+.squareExample1, .squareExample1_Ex {
+    background-image: url(../Image/Textures/grass.png);
+    background-size: cover;
+}
+
+.squareExample2, .squareExample2_Ex {
+    background-image: url(../Image/Textures/brick_1.png);
+    background-size: cover;
+}
+
+.squareExample3, .squareExample3_Ex {
+    background-image: url(../Image/Textures/brick_2.png);
+    background-size: cover;
+}
+
+.squareExample4, .squareExample4_Ex {
+    background-image: url(../Image/Textures/soil.png);
+    background-size: cover;
+}
+
+.squareExample5, .squareExample5_Ex {
+    background-image: url(../Image/Textures/brick_3.png);
+    background-size: cover;
+}
+
+.squareExample6, .squareExample6_Ex {
+    background-image: url(../Image/Textures/brick_4.png);
+    background-size: cover;
+}
+
+.squareExample7, .squareExample7_Ex {
+    background-image: url(../Image/Textures/brick_5.png);
+    background-size: cover;
+}
+
+.squareExample8, .squareExample8_Ex {
+    background-image: url(../Image/Textures/ground_1.png);
+    background-size: cover;
+}
+
+.squareExample9, .squareExample9_Ex {
+    background-image: url(../Image/Textures/ground_2.png);
+    background-size: cover;
+}
+
+.squareExample10, .squareExample10_Ex {
+    background-image: url(../Image/Textures/ground_3.png);
+    background-size: cover;
+}
+
+.squareExample11, .squareExample11_Ex {
+    background-image: url(../Image/Textures/ground_4.png);
+    background-size: cover;
+}
+
+.squareExample12, .squareExample12_Ex {
+    background-image: url(../Image/Textures/roof-tex_1.png);
+    background-size: cover;
+}
+
+.squareExample13, .squareExample13_Ex {
+    background-image: url(../Image/Textures/roof-tex_2.png);
+    background-size: cover;
+}
+
+.squareExample14, .squareExample14_Ex {
+    background-image: url(../Image/Textures/roof-tex_3.png);
+    background-size: cover;
+}
+
+.squareExample15, .squareExample15_Ex {
+    background-image: url(../Image/Textures/fence_1.png);
+    background-size: cover;
+}
+
+.squareExample16, .squareExample16_Ex {
+    background-image: url(../Image/Textures/fence_2.png);
+    background-size: cover;
+}
+
+.squareExample17, .squareExample17_Ex {
+    background-image: url(../Image/Textures/fence_3.png);
+    background-size: cover;
+}
+
+
+.squareExample18, .squareExample18_Ex {
+    background-image: url('../image/agricultureicons/artichoke.png');
+    background-size: cover;
+}
+
+.squareExample19, .squareExample19_Ex {
+    background-image: url('../image/agricultureicons/asparagus.png');
+    background-size: cover;
+}
+
+.squareExample20, .squareExample20_Ex {
+    background-image: url('../image/agricultureicons/basil.png');
+    background-size: cover;
+}
+
+.squareExample21, .squareExample21_Ex {
+    background-image: url('../image/agricultureicons/beans.png');
+    background-size: cover;
+}
+
+.squareExample22, .squareExample22_Ex {
+    background-image: url('../image/agricultureicons/beet.png');
+    background-size: cover;
+}
+
+.squareExample23, .squareExample23_Ex {
+    background-image: url('../image/agricultureicons/broccoli.png');
+    background-size: cover;
+}
+
+.squareExample24, .squareExample24_Ex {
+    background-image: url('../image/agricultureicons/cabbage.png');
+    background-size: cover;
+}
+
+.squareExample25, .squareExample25_Ex {
+    background-image: url('../image/agricultureicons/carrot.png');
+    background-size: cover;
+}
+
+.squareExample26, .squareExample26_Ex {
+    background-image: url('../image/agricultureicons/celery.png');
+    background-size: cover;
+}
+
+.squareExample27, .squareExample27_Ex {
+    background-image: url('../image/agricultureicons/chili.png');
+    background-size: cover;
+}
+
+.squareExample28, .squareExample28_Ex {
+    background-image: url('../image/agricultureicons/corn.png');
+    background-size: cover;
+}
+
+.squareExample29, .squareExample29_Ex {
+    background-image: url('../image/agricultureicons/cucumber.png');
+    background-size: cover;
+}
+
+.squareExample30, .squareExample30_Ex {
+    background-image: url('../image/agricultureicons/dill.png');
+    background-size: cover;
+}
+
+.squareExample31, .squareExample31_Ex {
+    background-image: url('../image/agricultureicons/eggplant.png');
+    background-size: cover;
+}
+
+.squareExample32, .squareExample32_Ex {
+    background-image: url('../image/agricultureicons/garlic.png');
+    background-size: cover;
+}
+
+.squareExample33, .squareExample33_Ex {
+    background-image: url('../image/agricultureicons/grapes.png');
+    background-size: cover;
+}
+
+.squareExample34, .squareExample34_Ex {
+    background-image: url('../image/agricultureicons/horseradish.png');
+    background-size: cover;
+}
+
+.squareExample35, .squareExample35_Ex {
+    background-image: url('../image/agricultureicons/mint.png');
+    background-size: cover;
+}
+
+.squareExample36, .squareExample36_Ex {
+    background-image: url('../image/agricultureicons/onion.png');
+    background-size: cover;
+}
+
+.squareExample37, .squareExample37_Ex {
+    background-image: url('../image/agricultureicons/parsley.png');
+    background-size: cover;
+}
+
+.squareExample38, .squareExample38_Ex {
+    background-image: url('../image/agricultureicons/peas.png');
+    background-size: cover;
+}
+
+.squareExample39, .squareExample39_Ex {
+    background-image: url('../image/agricultureicons/pepper.png');
+    background-size: cover;
+}
+
+.squareExample40, .squareExample40_Ex {
+    background-image: url('../image/agricultureicons/potato.png');
+    background-size: cover;
+}
+
+.squareExample41, .squareExample41_Ex {
+    background-image: url('../image/agricultureicons/pumpkin.png');
+    background-size: cover;
+}
+
+.squareExample42, .squareExample42_Ex {
+    background-image: url('../image/agricultureicons/radish.png');
+    background-size: cover;
+}
+
+.squareExample43, .squareExample43_Ex {
+    background-image: url('../image/agricultureicons/rose.png');
+    background-size: cover;
+}
+
+.squareExample44, .squareExample44_Ex {
+    background-image: url('../image/agricultureicons/salad.png');
+    background-size: cover;
+}
+
+.squareExample45, .squareExample45_Ex {
+    background-image: url('../image/agricultureicons/shallot.png');
+    background-size: cover;
+}
+
+.squareExample46, .squareExample46_Ex {
+    background-image: url('../image/agricultureicons/spinach.png');
+    background-size: cover;
+}
+
+.squareExample47, .squareExample47_Ex {
+    background-image: url('../image/agricultureicons/squash.png');
+    background-size: cover;
+}
+
+.squareExample48, .squareExample48_Ex {
+    background-image: url('../image/agricultureicons/strawberry.png');
+    background-size: cover;
+}
+
+.squareExample49, .squareExample49_Ex {
+    background-image: url('../image/agricultureicons/tomato.png');
+    background-size: cover;
+}
+
+.squareExample50, .squareExample50_Ex {
+    background-image: url('../image/agricultureicons/wheat.png');
+    background-size: cover;
+}

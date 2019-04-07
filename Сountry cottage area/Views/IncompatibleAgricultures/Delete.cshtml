@@ -1,0 +1,20 @@
+﻿@model Сountry_cottage_area.Models.IncompatibleAgriculture
+
+@{
+    ViewBag.Title = "Удаление";
+}
+
+
+<h3>Вы действительно хотите удалить это правило?</h3>
+<div>
+    <hr />
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Удалить" class="btn btn-success" /> |
+            @Html.ActionLink("Вернуться назад", "Index")
+        </div>
+    }
+</div>

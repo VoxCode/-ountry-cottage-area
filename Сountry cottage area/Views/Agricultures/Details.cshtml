@@ -1,0 +1,58 @@
+﻿@model Сountry_cottage_area.Models.Agriculture
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Agriculture</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Variable)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Variable)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AgricultureIndex)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AgricultureIndex)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AgricultureNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AgricultureNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AreaId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AreaId)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

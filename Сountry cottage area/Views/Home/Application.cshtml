@@ -1,0 +1,323 @@
+﻿@{
+    ViewBag.Title = "Application";
+}
+<div class="appParent">
+    <div class="appToolbar">
+        <button type="button" id="addArr" class="btn btn-outline-success">Сохранить текущее состояние проекта</button>
+        <button type="button" id="planningStagePanelButton" class="btn btn-outline-dark dropdown-toggle">Завершенные сезоны</button>
+        <div class="zoomDiv">
+            <a id="ZoomIn"><img src="~/Image/Zoom/zoom-plus.png" alt="+" class="zoom" /></a>
+            <a id="ZoomOut"><img src="~/Image/Zoom/zoom-decreasing.png" alt="-" class="zoom" /></a>
+        </div>
+    </div>
+    <div class="appMap"></div>
+    <div class="firstYear"></div>
+    <div class="secondYear"></div>
+    <div class="thirdYear"></div>
+    <div class="toolPanel">
+        <div class="textures">
+            <h3>Инструменты</h3>
+            <div class="appTools">
+                <div class="squareEraser"><p>Ластик</p></div>
+                <div class="moveArrow"><p>Перемещение</p></div>
+            </div>
+            <h3>Ландшафт</h3>
+            <div class="appLandscape">
+                <div class="squareExample1_Ex"><p>Трава</p></div>
+                <div class="squareExample2_Ex"><p>Дорога</p></div>
+                <div class="squareExample3_Ex"><p>Дорога2</p></div>
+                <div class="squareExample4_Ex"><p>Земля</p></div>
+                <div class="squareExample5_Ex"><p>Дорога3</p></div>
+                <div class="squareExample6_Ex"><p>Дорога4</p></div>
+                <div class="squareExample7_Ex"><p>Дорога5</p></div>
+                <div class="squareExample8_Ex"><p>Песок</p></div>
+                <div class="squareExample9_Ex"><p>Песок2</p></div>
+                <div class="squareExample10_Ex"><p>Песок3</p></div>
+                <div class="squareExample11_Ex"><p>Кладка</p></div>
+                <div class="squareExample12_Ex"><p>Крыша (конек)</p></div>
+                <div class="squareExample13_Ex"><p>Крыша (право)</p></div>
+                <div class="squareExample14_Ex"><p>Крыша (лево)</p></div>
+            </div>
+            <h3>Культуры</h3>
+            <div class="appAgricultures">
+                <div class="squareExample18_Ex"><p>Артишок</p></div>
+                <div class="squareExample19_Ex"><p>Спаржа</p></div>
+                <div class="squareExample20_Ex"><p>Базилик</p></div>
+                <div class="squareExample21_Ex"><p>Бобы</p></div>
+                <div class="squareExample22_Ex"><p>Свекла</p></div>
+                <div class="squareExample23_Ex"><p>Брокколи</p></div>
+                <div class="squareExample24_Ex"><p>Капуста</p></div>
+                <div class="squareExample25_Ex"><p>Морковь</p></div>
+                <div class="squareExample26_Ex"><p>Сельдерей</p></div>
+                <div class="squareExample27_Ex"><p>Красный Перец</p></div>
+                <div class="squareExample28_Ex"><p>Кукуруза</p></div>
+                <div class="squareExample29_Ex"><p>Огурец</p></div>
+                <div class="squareExample30_Ex"><p>Укроп</p></div>
+                <div class="squareExample31_Ex"><p>Баклажан</p></div>
+                <div class="squareExample32_Ex"><p>Чеснок</p></div>
+                <div class="squareExample33_Ex"><p>Виноград</p></div>
+                <div class="squareExample34_Ex"><p>Хрен</p></div>
+                <div class="squareExample35_Ex"><p>Мята</p></div>
+                <div class="squareExample36_Ex"><p>Зеленый лук</p></div>
+                <div class="squareExample37_Ex"><p>Петрушка</p></div>
+                <div class="squareExample38_Ex"><p>Горох</p></div>
+                <div class="squareExample39_Ex"><p>Сладкий перец</p></div>
+                <div class="squareExample40_Ex"><p>Картофель</p></div>
+                <div class="squareExample41_Ex"><p>Тыква</p></div>
+                <div class="squareExample42_Ex"><p>Редиска</p></div>
+                <div class="squareExample44_Ex"><p>Салат</p></div>
+                <div class="squareExample45_Ex"><p>Лук-шалот</p></div>
+                <div class="squareExample46_Ex"><p>Шпинат</p></div>
+                <div class="squareExample47_Ex"><p>Кабачок</p></div>
+                <div class="squareExample48_Ex"><p>Клубника</p></div>
+                <div class="squareExample49_Ex"><p>Помидор</p></div>
+                <div class="squareExample50_Ex"><p>Пшеница</p></div>
+            </div>
+        </div>
+    </div>
+    <div class="planningStagePanel">
+        <div id="addNewStage">
+            <button type="button" id="finishTheYear" class="btn btn-success">Завершить текущий сезон</button>
+        </div>
+        <div class="planningStagesList"></div>
+    </div>
+    <div class="textureInfoPannel">
+        <div class="chosenItem"></div>
+        <input type="text" name="variety" id="agriVarIn" placeholder="Сорт" />
+        <input type="date" name="variety" id="agriDateIn" />
+        <button type="button" class="btn btn-warning" id="compatibilityСheck">Проверить совместимость</button>
+
+        <button type="button" class="btn btn-info" id="addAgri">Сохранить</button>
+        <button type="button" class="btn btn-info" id="cancelAgri">Отмена</button>
+    </div>
+    <div class="tool-Btn">
+        <img src="~/Image/Arrow.png" alt="toolBtn" class="toolBtn">
+    </div>
+    <input type="hidden" id="hiddenInput1" value="@ViewBag.Cord" />
+</div>
+@section scripts{
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/Scripts/Application.js"></script>
+
+    <script>
+
+        //All map Save
+
+        function saveMapAjax() {
+           var arrCord = new Array();
+           arrCord[0] = $('.appMap').html();
+
+            $.ajax({
+                type: "Post",
+                contentType: 'application/json; charset=utf-8',
+                traditional: true,
+                url: "@Url.Action("MapSave")",
+                data: JSON.stringify(arrCord),
+                success: function () {
+                    alert("Ваш проект успешно сохранен!");
+                    doubleClickBlock = false;
+                },
+                error: function () {
+                    alert("Ошибка сохранения!");
+                    doubleClickBlock = false;
+                }
+            });
+        }
+
+        //Context menu info
+
+        function contextMenuInfoAjax(arr) {
+            $.ajax({
+                type: "Post",
+                contentType: 'application/json; charset=utf-8',
+                traditional: true,
+                url: "@Url.Action("GetAgriculture")",
+                data: JSON.stringify(arr),
+                success: function (response) {
+                    alert(response);
+                    $('.context-menu').remove();
+                },
+                error: function () {
+                    alert("Ошибка!");
+                }
+            });
+        }
+
+        //Context menu delete
+
+        function contextMenuDelAjax(arr) {
+            $.ajax({
+                type: "Post",
+                contentType: 'application/json; charset=utf-8',
+                traditional: true,
+                url: "@Url.Action("DelAgriculture")",
+                data: JSON.stringify(arr),
+                success: function (response) {
+                    console.log(response);
+
+                    $('.squareExample' + arr[0]).each(function () {
+
+                        if ($(this).attr("id") == arr[1]) {
+                            $(this).toggleClass();
+                            $(this).toggleClass('square squareExample4');
+                            $(this).removeAttr("id");
+                        }
+                    });
+                    saveMapAjax();
+                    block = false;
+                },
+                error: function () {
+                    alert("Ошибка!");
+                    block = false;
+                }
+            });
+        }
+
+        //Agriculture Save
+
+        function agricultureSaveAjax(agriArr) {
+            $.ajax({
+                type: "Post",
+                contentType: 'application/json; charset=utf-8',
+                traditional: true,
+                url: "@Url.Action("AgricultureSave")",
+                data: JSON.stringify(agriArr),
+                success: function () {
+                    //alert("Культура успешно сохранена!");
+                    saveMapAjax();
+                    agriAddBlocker = true;
+                    $(".textureInfoPannel").toggleClass("textureInfoPannel_active");
+                    $(".chosenItem").toggleClass(texturesHandler());
+                    clickCounter = (-2);
+                    block = false;
+                    doubleClickBlock = false;
+                },
+                error: function () {
+                    alert("Ошибка сохранения! Возможно была неверно введена дата посадки. Пожалуйста введите дату посадки в формате дд.мм.гггг!");
+                    doubleClickBlock = false;
+                }
+            });
+        }
+
+        //Add new stage
+
+        function addNewStageAjax(arr) {
+            $.ajax({
+                type: "Post",
+                contentType: 'application/json; charset=utf-8',
+                traditional: true,
+                url: "@Url.Action("AddNewStage")",
+                data: JSON.stringify(arr),
+                success: function () {             
+                    stagesListClear();
+                    getStagesListAjax();
+                },
+                error: function () {
+                    alert("Ошибка сохранения!");
+                    doubleClickBlock = false;
+                }
+            });
+        }
+
+        //Stages List Choice
+
+        function stagesListAjax(id) {
+            $.ajax({
+                url: "@Url.Action("GetChoiceStage")",
+                type: "GET",
+                data: "id=" + id,
+                success: function (response) {
+                    choiceBlock = false;
+                    $('.appMap').empty();
+                    response = JSON.parse(response);
+                    $('.appMap').append(response);
+                    $(".planningStagePanel").toggleClass("planningStagePanel_active");
+                    $('.swichStagesMode').remove();
+                    $(".appParent").append($('<div class="swichStagesMode">')
+                    .append('<span>Режим Просмотра</span>')
+                        .append('<button type="button" class="btn btn-outline-success" id="swmBack">Назад</button></div>'));
+                    agriAddBlocker = false;
+                    swmBack();
+                },
+                error: function () {
+                    alert("Ошибка!");
+                }
+            });
+        }
+
+        //Get Stages List
+
+        function getStagesListAjax() {
+            $.ajax({
+                url: "@Url.Action("GetStagesList")",
+                type: "GET",
+                success: function (response) {
+                    $(".planningStagesList").append(response);
+                    stagesListChoice();
+                    stageBlock = true;
+                },
+                error: function () {
+                    alert("Ошибка!");
+                }
+            });
+        }
+
+        function finishTheYearAjax() {
+            $.ajax({
+                type: "Post",
+                url: "@Url.Action("FinishTheYear")",
+                success: function (response) {
+                    console.log(response);
+
+                    $('.appMap div').each(function () {
+
+                        if ($(this).attr("id") > 0) {
+                            $(this).toggleClass();
+                            $(this).toggleClass('square squareExample4');
+                            $(this).removeAttr("id");
+                        }
+                    });
+                    saveMapAjax();
+                    block = false;
+                },
+                error: function () {
+                    alert("Ошибка!");
+                    block = false;
+                }
+            });
+        }
+
+        function lastThreeYearsAjax() {
+            $.ajax({
+                type: "Post",
+                url: "@Url.Action("LastThreeYears")",
+                success: function (response) {
+                    response = JSON.parse(response);
+                    lastThreeYears(response);                
+                },
+                error: function () {
+                    alert("Ошибка!");                  
+                }
+            });
+        }
+
+        function incompatibleCheckAjax(arr) {
+            $.ajax({
+                type: "Post",
+                contentType: 'application/json; charset=utf-8',
+                traditional: true,
+                url: "@Url.Action("IncompatibleCheck")",
+                data: JSON.stringify(arr),
+                success: function (response) {             
+                    response = JSON.parse(response);
+                    console.log(response);
+                    incompatibleCheck(response);
+                },
+                error: function () {
+                    alert("Ошибка!");                  
+                }
+            });
+        }
+
+    </script>
+}
