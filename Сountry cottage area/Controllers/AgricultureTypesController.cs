@@ -15,6 +15,7 @@ namespace Сountry_cottage_area.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: AgricultureTypes
+        [Authorize(Roles = "admin")]
         public ActionResult Index()
         {
             var agricultureTypes = db.AgricultureTypes.Include(a => a.AgriculturesCategory);
@@ -22,6 +23,7 @@ namespace Сountry_cottage_area.Controllers
         }
 
         // GET: AgricultureTypes/Details/5
+        [Authorize(Roles = "admin")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -37,6 +39,7 @@ namespace Сountry_cottage_area.Controllers
         }
 
         // GET: AgricultureTypes/Create
+        [Authorize(Roles = "admin")]
         public ActionResult Create()
         {
             ViewBag.AgriculturesCategoryId = new SelectList(db.AgriculturesCategories, "Id", "Name");
@@ -48,6 +51,7 @@ namespace Сountry_cottage_area.Controllers
         // сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "admin")]
         public ActionResult Create([Bind(Include = "Id,Name,AgriculturesCategoryId,Index,Content")] AgricultureType agricultureType)
         {
             if (ModelState.IsValid)
@@ -62,6 +66,7 @@ namespace Сountry_cottage_area.Controllers
         }
 
         // GET: AgricultureTypes/Edit/5
+        [Authorize(Roles = "admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -82,6 +87,7 @@ namespace Сountry_cottage_area.Controllers
         // сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "admin")]
         public ActionResult Edit([Bind(Include = "Id,Name,AgriculturesCategoryId,Index,Content")] AgricultureType agricultureType)
         {
             if (ModelState.IsValid)
@@ -95,6 +101,7 @@ namespace Сountry_cottage_area.Controllers
         }
 
         // GET: AgricultureTypes/Delete/5
+        [Authorize(Roles = "admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -112,6 +119,7 @@ namespace Сountry_cottage_area.Controllers
         // POST: AgricultureTypes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "admin")]
         public ActionResult DeleteConfirmed(int id)
         {
             AgricultureType agricultureType = db.AgricultureTypes.Find(id);

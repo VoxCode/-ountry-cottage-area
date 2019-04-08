@@ -31,6 +31,7 @@ namespace Сountry_cottage_area.Controllers
                 return View();           
         }
 
+        [Authorize(Roles = "user")]
         public ActionResult MapSave(List<string> arrCord)
         {
             AllMap allMap = new AllMap();
@@ -64,6 +65,7 @@ namespace Сountry_cottage_area.Controllers
             return RedirectToAction("Application");
         }
 
+        [Authorize(Roles = "user")]
         public ActionResult AgricultureSave(List<string> agriArr)
         {
             Agriculture agriculture = new Agriculture();
@@ -95,6 +97,7 @@ namespace Сountry_cottage_area.Controllers
             return Content(culture.Content);
         }
 
+        [Authorize(Roles = "user")]
         public ActionResult GetAgriculture(List<string> arr)
         {
             int index, number;
@@ -112,6 +115,7 @@ namespace Сountry_cottage_area.Controllers
             return Content(f + culture.Date + e + culture.Variable);
         }
 
+        [Authorize(Roles = "user")]
         public ActionResult DelAgriculture(List<string> arr)
         {
             int index, number;
@@ -130,6 +134,7 @@ namespace Сountry_cottage_area.Controllers
             return Content(f);
         }
 
+        [Authorize(Roles = "user")]
         public ActionResult AddNewStage(List<string> arr)
         {
             PlanningStage planningStage = new PlanningStage();
@@ -148,6 +153,7 @@ namespace Сountry_cottage_area.Controllers
             return RedirectToAction("Application");
         }
 
+        [Authorize(Roles = "user")]
         public ActionResult GetStagesList ()
         {
             var userIdentity = db.Users.FirstOrDefault(p => p.Email == User.Identity.Name);
@@ -162,6 +168,7 @@ namespace Сountry_cottage_area.Controllers
             return Content(content);
         }
 
+        [Authorize(Roles = "user")]
         public ActionResult GetChoiceStage (string id)
         {
             int cid = Convert.ToInt32(id);
@@ -172,6 +179,7 @@ namespace Сountry_cottage_area.Controllers
             return Content(stage.Content);
         }
 
+        [Authorize(Roles = "user")]
         public ActionResult FinishTheYear()
         {
 
@@ -190,6 +198,7 @@ namespace Сountry_cottage_area.Controllers
             return Content(f);
         }
 
+        [Authorize(Roles = "user")]
         public ActionResult LastThreeYears()
         {
             var userIdentity = db.Users.FirstOrDefault(p => p.Email == User.Identity.Name);
@@ -215,6 +224,7 @@ namespace Сountry_cottage_area.Controllers
             return Content(json);
         }
 
+        [Authorize(Roles = "user")]
         public ActionResult IncompatibleCheck(List<string> arr)
         {
             int select = Convert.ToInt32(arr[arr.Count - 1]);

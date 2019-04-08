@@ -15,6 +15,7 @@ namespace Сountry_cottage_area.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: IncompatibleAgricultures
+        [Authorize(Roles = "admin")]
         public ActionResult Index()
         {
             var incompatibleAgricultures = db.IncompatibleAgricultures.Include(i => i.FirstCulure).Include(i => i.SecondCulure);
@@ -22,6 +23,7 @@ namespace Сountry_cottage_area.Controllers
         }
 
         // GET: IncompatibleAgricultures/Details/5
+        [Authorize(Roles = "admin")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -37,6 +39,7 @@ namespace Сountry_cottage_area.Controllers
         }
 
         // GET: IncompatibleAgricultures/Create
+        [Authorize(Roles = "admin")]
         public ActionResult Create()
         {
             ViewBag.FirstCulureId = new SelectList(db.AgricultureTypes, "Id", "Name");
@@ -49,6 +52,7 @@ namespace Сountry_cottage_area.Controllers
         // сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "admin")]
         public ActionResult Create([Bind(Include = "Id,FirstCulureId,SecondCulureId")] IncompatibleAgriculture incompatibleAgriculture)
         {
             if (ModelState.IsValid)
@@ -64,6 +68,7 @@ namespace Сountry_cottage_area.Controllers
         }
 
         // GET: IncompatibleAgricultures/Edit/5
+        [Authorize(Roles = "admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -85,6 +90,7 @@ namespace Сountry_cottage_area.Controllers
         // сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "admin")]
         public ActionResult Edit([Bind(Include = "Id,FirstCulureId,SecondCulureId")] IncompatibleAgriculture incompatibleAgriculture)
         {
             if (ModelState.IsValid)
@@ -99,6 +105,7 @@ namespace Сountry_cottage_area.Controllers
         }
 
         // GET: IncompatibleAgricultures/Delete/5
+        [Authorize(Roles = "admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -116,6 +123,7 @@ namespace Сountry_cottage_area.Controllers
         // POST: IncompatibleAgricultures/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "admin")]
         public ActionResult DeleteConfirmed(int id)
         {
             IncompatibleAgriculture incompatibleAgriculture = db.IncompatibleAgricultures.Find(id);
