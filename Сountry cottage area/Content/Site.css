@@ -477,7 +477,7 @@ section {
 .appAgricultures {
     margin: 2px;
     overflow-y: scroll;
-    height: 1000px;
+    height: 70vh;
 }
 
 .appLandscape div {
@@ -592,6 +592,8 @@ section {
     left: 0;
 }
 
+/*Guide*/
+
 .guideToolList {
     position: relative;
     display: inline-block;
@@ -651,8 +653,22 @@ section {
         background-color: lightslategray;
     }
 
-/*Delete choice window*/
+.vegetables{
+    overflow-y:scroll;
+    height: 50vh;
+}
 
+.greenery {
+    overflow-y: scroll;
+    height: 50vh;
+}
+
+.berries {
+    overflow-y: scroll;
+    height: 50vh;
+}
+
+/*Delete choice window*/
 .delChoice {
     position: absolute;
     width: 250px;

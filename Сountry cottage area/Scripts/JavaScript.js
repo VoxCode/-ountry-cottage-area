@@ -9,7 +9,8 @@ $('.menu-btn').click(function (e) {
 // Guide Tool List
 
 $('.vegetables').hide();
-$('.fruits').hide();
+$('.greenery').hide();
+$('.berries').hide();
 
 $('.guideToolList h3').click(function () {
 
@@ -27,14 +28,21 @@ $('.guideToolList h3').click(function () {
 
 // Guide Click Handler
 
-$('.vegetables').click(function (event) {
+$('.vegetables a').click(function (event) {
 
     var id = $(event.target).attr("id");
     makeRequestAjax(id);  
     
 });
 
-$('.fruits').click(function (event) {
+$('.greenery a').click(function (event) {
+
+    var id = $(event.target).attr("id");
+    makeRequestAjax(id);
+
+});
+
+$('.berries a').click(function (event) {
 
     var id = $(event.target).attr("id");
     makeRequestAjax(id);

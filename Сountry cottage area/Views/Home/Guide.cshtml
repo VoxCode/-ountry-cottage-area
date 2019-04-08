@@ -13,14 +13,14 @@
                     }
                 </div>
                 <h3>Зелень</h3>
-                <div class="fruits">
+                <div class="greenery">
                     @foreach (var item in Model.Where(p => p.AgriCategory == "greenery"))
                     {
                         <a href="#" id="@Html.DisplayFor(modelItem => item.Index)">@Html.DisplayFor(modelItem => item.Name)</a>
                     }
                 </div>
                 <h3>Ягоды</h3>
-                <div class="fruits">
+                <div class="berries">
                     @foreach (var item in Model.Where(p => p.AgriCategory == "berries"))
                     {
                         <a href="#" id="@Html.DisplayFor(modelItem => item.Index)">@Html.DisplayFor(modelItem => item.Name)</a>
