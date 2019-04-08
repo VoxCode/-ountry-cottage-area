@@ -17,12 +17,9 @@ namespace Сountry_cottage_area.Controllers
         {
             return View();
         }
-
+        [Authorize(Roles = "user")]
         public ActionResult Application()
-        {
-            if (User.Identity.IsAuthenticated)
-            {
-                
+        {                     
                 var userIdentity = db.Users.FirstOrDefault(p => p.Email == User.Identity.Name);
                 var area = db.Areas.FirstOrDefault(p => p.UserId == userIdentity.Id);
 
@@ -31,9 +28,7 @@ namespace Сountry_cottage_area.Controllers
                     jsonMap = a.Cordinates;
 
                 ViewBag.Cord = jsonMap;
-                return View();
-            }
-            return RedirectToAction("Login", "Account");
+                return View();           
         }
 
         public ActionResult MapSave(List<string> arrCord)
@@ -222,14 +217,14 @@ namespace Сountry_cottage_area.Controllers
 
         public ActionResult IncompatibleCheck(List<string> arr)
         {
-            string select = arr[arr.Count - 1];
-            var b = db.AgricultureTypes.FirstOrDefault(p => p.AgricultureAppClass == select);
+            int select = Convert.ToInt32(arr[arr.Count - 1]);
+            var b = db.AgricultureTypes.FirstOrDefault(p => p.Index == select);
             if (b != null)
             {
                 for (int i = arr.Count - 2; i >= 0; i--)
                 {
-                    string q = arr[i];
-                    var rule = db.IncompatibleAgricultures.FirstOrDefault(p => p.AgricultureName == q && p.AgricultureTypeId == b.Id);
+                    int q = Convert.ToInt32(arr[i]);
+                    var rule = db.IncompatibleAgricultures.FirstOrDefault(p => p.SecondCulure.Index == q && p.FirstCulure.Index == select);
                     if (rule != null)
                     {
                         arr[i] = "inc";

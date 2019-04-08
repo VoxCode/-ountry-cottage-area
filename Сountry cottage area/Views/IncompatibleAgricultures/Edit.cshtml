@@ -10,25 +10,25 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.AgricultureTypeId, "Назавние первой культуры", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.FirstCulureId, "Назавние первой культуры", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("AgricultureTypeId", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.AgricultureTypeId, "", new { @class = "text-danger" })
+                @Html.DropDownList("FirstCulureId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.FirstCulureId, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            <label class="control-label col-md-2">СSS класс второй культуры в формате: square squareExample + идентификатор</label>
+            @Html.LabelFor(model => model.SecondCulureId, "Назавние второй культуры", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.AgricultureName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.AgricultureName, "", new { @class = "text-danger" })
+                @Html.DropDownList("SecondCulureId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.SecondCulureId, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -40,9 +40,9 @@
     </div>
 }
 
-<div>
-    @Html.ActionLink("Вернуться назад", "Index")
-</div>
+    <div>
+        @Html.ActionLink("Вернуться назад", "Index")
+    </div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

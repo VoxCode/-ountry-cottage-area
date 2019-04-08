@@ -26,6 +26,9 @@ namespace Сountry_cottage_area.Models
         public DbSet<AllMap> AllMaps { get; set; }
         public DbSet<PlanningStage> PlanningStages { get; set; }       
         public DbSet<IncompatibleAgriculture> IncompatibleAgricultures { get; set; }
+        public DbSet<AgriculturesCategory> AgriculturesCategories { get; set; }
+
+
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)

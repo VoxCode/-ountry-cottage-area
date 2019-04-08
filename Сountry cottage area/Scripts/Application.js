@@ -240,12 +240,12 @@ $('#addAgri').click(function () {
         agriArr[2] = clickCounter;
         var agriClass = '.squareExample' + clickCounter;
         agriArr[3] = idGenerator(agriClass);
-        if (agriArr[3] == agriId) {
-            console.log(agriArr);
-            agricultureSaveAjax(agriArr);
+        if (agriArr[3] == agriId && agriArr[1] != "") {
+                console.log(agriArr);
+                agricultureSaveAjax(agriArr);         
         }
         else {
-            alert("Не было добавлено новых культур!");
+            alert("Не было добавлено новых культур или не заполнена дата посадки!");
             doubleClickBlock = false;
         }
     }
@@ -427,10 +427,10 @@ function lastThreeYears(arr) {
         else {
             d++;
         }
-        cords[c] = yearCords[0][i];
+        cords[c] = Number(yearCords[0][i].match(/\d+/));
         c++;
     }
-    cords[c] = yearCords[3][0];
+    cords[c] = Number(yearCords[3][0].match(/\d+/));
     if (d > 0) {
         incompatibleCheckAjax(cords);
     }

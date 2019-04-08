@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Сountry_cottage_area.Models;
@@ -155,6 +156,9 @@ namespace Сountry_cottage_area.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    var role = new IdentityRole { Name = "user" };
+                    UserManager.AddToRole(user.Id, role.Name);
+
                     ApplicationDbContext db = new ApplicationDbContext();
                     db.Areas.Add(new Area { Name = user.Email, UserId = user.Id });
                     db.SaveChanges();

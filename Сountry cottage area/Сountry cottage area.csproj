@@ -205,13 +205,14 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Agriculture.cs" />
+    <Compile Include="Models\AgriculturesCategory.cs" />
     <Compile Include="Models\AgricultureType.cs" />
     <Compile Include="Models\AllMap.cs" />
     <Compile Include="Models\AppDbInitializer.cs" />
     <Compile Include="Models\Area.cs" />
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\IncompatibleAgriculture.cs" />
+    <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\PlanningStage.cs" />
     <Compile Include="Models\Registeration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -402,16 +403,16 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Home\Guide.cshtml" />
-    <Content Include="Views\AgricultureTypes\Create.cshtml" />
-    <Content Include="Views\AgricultureTypes\Delete.cshtml" />
-    <Content Include="Views\AgricultureTypes\Details.cshtml" />
-    <Content Include="Views\AgricultureTypes\Edit.cshtml" />
-    <Content Include="Views\AgricultureTypes\Index.cshtml" />
     <Content Include="Views\IncompatibleAgricultures\Create.cshtml" />
     <Content Include="Views\IncompatibleAgricultures\Delete.cshtml" />
     <Content Include="Views\IncompatibleAgricultures\Details.cshtml" />
     <Content Include="Views\IncompatibleAgricultures\Edit.cshtml" />
     <Content Include="Views\IncompatibleAgricultures\Index.cshtml" />
+    <Content Include="Views\AgricultureTypes\Create.cshtml" />
+    <Content Include="Views\AgricultureTypes\Delete.cshtml" />
+    <Content Include="Views\AgricultureTypes\Details.cshtml" />
+    <Content Include="Views\AgricultureTypes\Edit.cshtml" />
+    <Content Include="Views\AgricultureTypes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />

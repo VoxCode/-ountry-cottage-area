@@ -7,21 +7,21 @@
                 <h3>Овощи</h3>
                 <div class="vegetables">
 
-                    @foreach (var item in Model.Where(p => p.AgriCategory == "vegetables"))
+                    @foreach (var item in Model.Where(p => p.AgriculturesCategoryId == 1))
                     {
                         <a href="#" id="@Html.DisplayFor(modelItem => item.Index)">@Html.DisplayFor(modelItem => item.Name)</a>
                     }
                 </div>
                 <h3>Зелень</h3>
                 <div class="greenery">
-                    @foreach (var item in Model.Where(p => p.AgriCategory == "greenery"))
+                    @foreach (var item in Model.Where(p => p.AgriculturesCategoryId == 2))
                     {
                         <a href="#" id="@Html.DisplayFor(modelItem => item.Index)">@Html.DisplayFor(modelItem => item.Name)</a>
                     }
                 </div>
                 <h3>Ягоды</h3>
                 <div class="berries">
-                    @foreach (var item in Model.Where(p => p.AgriCategory == "berries"))
+                    @foreach (var item in Model.Where(p => p.AgriculturesCategoryId == 3))
                     {
                         <a href="#" id="@Html.DisplayFor(modelItem => item.Index)">@Html.DisplayFor(modelItem => item.Name)</a>
                     }

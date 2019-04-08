@@ -15,14 +15,13 @@ namespace Сountry_cottage_area.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: AgricultureTypes
-        [Authorize(Roles = "admin")]
         public ActionResult Index()
         {
-            return View(db.AgricultureTypes.ToList());
+            var agricultureTypes = db.AgricultureTypes.Include(a => a.AgriculturesCategory);
+            return View(agricultureTypes.ToList());
         }
 
         // GET: AgricultureTypes/Details/5
-        [Authorize(Roles = "admin")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -38,9 +37,9 @@ namespace Сountry_cottage_area.Controllers
         }
 
         // GET: AgricultureTypes/Create
-        [Authorize(Roles = "admin")]
         public ActionResult Create()
         {
+            ViewBag.AgriculturesCategoryId = new SelectList(db.AgriculturesCategories, "Id", "Name");
             return View();
         }
 
@@ -49,8 +48,7 @@ namespace Сountry_cottage_area.Controllers
         // сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "admin")]
-        public ActionResult Create([Bind(Include = "Id,Name,AgriCategory,Index,Content,AgricultureAppClass")] AgricultureType agricultureType)
+        public ActionResult Create([Bind(Include = "Id,Name,AgriculturesCategoryId,Index,Content")] AgricultureType agricultureType)
         {
             if (ModelState.IsValid)
             {
@@ -59,11 +57,11 @@ namespace Сountry_cottage_area.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.AgriculturesCategoryId = new SelectList(db.AgriculturesCategories, "Id", "Name", agricultureType.AgriculturesCategoryId);
             return View(agricultureType);
         }
 
         // GET: AgricultureTypes/Edit/5
-        [Authorize(Roles = "admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -75,6 +73,7 @@ namespace Сountry_cottage_area.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.AgriculturesCategoryId = new SelectList(db.AgriculturesCategories, "Id", "Name", agricultureType.AgriculturesCategoryId);
             return View(agricultureType);
         }
 
@@ -83,8 +82,7 @@ namespace Сountry_cottage_area.Controllers
         // сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "admin")]
-        public ActionResult Edit([Bind(Include = "Id,Name,AgriCategory,Index,Content,AgricultureAppClass")] AgricultureType agricultureType)
+        public ActionResult Edit([Bind(Include = "Id,Name,AgriculturesCategoryId,Index,Content")] AgricultureType agricultureType)
         {
             if (ModelState.IsValid)
             {
@@ -92,11 +90,11 @@ namespace Сountry_cottage_area.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.AgriculturesCategoryId = new SelectList(db.AgriculturesCategories, "Id", "Name", agricultureType.AgriculturesCategoryId);
             return View(agricultureType);
         }
 
         // GET: AgricultureTypes/Delete/5
-        [Authorize(Roles = "admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -114,7 +112,6 @@ namespace Сountry_cottage_area.Controllers
         // POST: AgricultureTypes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "admin")]
         public ActionResult DeleteConfirmed(int id)
         {
             AgricultureType agricultureType = db.AgricultureTypes.Find(id);

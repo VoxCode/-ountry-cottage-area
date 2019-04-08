@@ -11,19 +11,19 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
+            @Html.DisplayNameFor(model => model.AgriculturesCategory.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AgriculturesCategory.Name)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.Name)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AgriCategory)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AgriCategory)
         </dd>
 
         <dt>
@@ -40,14 +40,6 @@
 
         <dd>
             @Html.DisplayFor(model => model.Content)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AgricultureAppClass)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AgricultureAppClass)
         </dd>
 
     </dl>
