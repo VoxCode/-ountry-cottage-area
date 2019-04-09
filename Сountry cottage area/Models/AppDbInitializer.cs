@@ -22,9 +22,9 @@ namespace Сountry_cottage_area.Models
             string password = "Qwer_12345";
             var result = userManager.Create(admin, password);
             ApplicationDbContext db = new ApplicationDbContext();
-            db.AgriculturesCategories.Add(new AgriculturesCategory { Name = "Овощи", CategoryClass = "vegetables" });
-            db.AgriculturesCategories.Add(new AgriculturesCategory { Name = "Зелень", CategoryClass = "greenery" });
-            db.AgriculturesCategories.Add(new AgriculturesCategory { Name = "Ягоды", CategoryClass = "berries" });
+            db.AgriculturesCategories.Add(new AgriculturesCategory { Name = "Овощи" });
+            db.AgriculturesCategories.Add(new AgriculturesCategory { Name = "Зелень" });
+            db.AgriculturesCategories.Add(new AgriculturesCategory { Name = "Ягоды" });
             db.Areas.Add(new Area { Name = admin.Email, UserId = admin.Id });
             db.SaveChanges();
 
