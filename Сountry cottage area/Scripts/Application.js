@@ -241,8 +241,8 @@ $('#addAgri').click(function () {
         var agriClass = '.squareExample' + clickCounter;
         agriArr[3] = idGenerator(agriClass);
         if (agriArr[3] == agriId && agriArr[1] != "") {
-                console.log(agriArr);
-                agricultureSaveAjax(agriArr);         
+            console.log(agriArr);
+            agricultureSaveAjax(agriArr);
         }
         else {
             alert("Не было добавлено новых культур или не заполнена дата посадки!");
@@ -370,8 +370,11 @@ $('#compatibilityСheck').click(function () {
 
         }
     });
+    if (cordArr[0] != undefined) {
+        lastThreeYearsAjax();
+    }
     console.log(cordArr);
-    lastThreeYearsAjax();
+
 
 
     //cordArr[0] = $(this).index('.appMap div');
@@ -427,7 +430,12 @@ function lastThreeYears(arr) {
         else {
             d++;
         }
-        cords[c] = Number(yearCords[0][i].match(/\d+/));
+        if (yearCords[0][i] != undefined) {
+            cords[c] = Number(yearCords[0][i].match(/\d+/));
+        }
+        else {
+            cords[c] = 0;
+        }
         c++;
     }
     cords[c] = Number(yearCords[3][0].match(/\d+/));
@@ -481,17 +489,19 @@ $('.appAgricultures div').click(function (event) {
     $('.context-menu').remove();
     if (agriAddBlocker == true) {
         var f = $(event.target).attr("class");
-        f = Number(f.match(/\d+/));
-        clickCounter = f;
-        var agriClass = '.squareExample' + clickCounter;
-        var id = idGenerator(agriClass);
-        agriId = ++id;
-        agriAddBlocker = false;
-        stagesListClear();
-        $(".textureInfoPannel").toggleClass("textureInfoPannel_active");
-        $(".chosenItem").toggleClass(texturesHandler());
-        backupMap[0] = $('.appMap').html();
-        block = true;
+        if (f != undefined) {
+            f = Number(f.match(/\d+/));
+            clickCounter = f;
+            var agriClass = '.squareExample' + clickCounter;
+            var id = idGenerator(agriClass);
+            agriId = ++id;
+            agriAddBlocker = false;
+            stagesListClear();
+            $(".textureInfoPannel").toggleClass("textureInfoPannel_active");
+            $(".chosenItem").toggleClass(texturesHandler());
+            backupMap[0] = $('.appMap').html();
+            block = true;
+        }
     }
 });
 
@@ -500,8 +510,10 @@ $('.appLandscape div').click(function (event) {
     $('.context-menu').remove();
     if (agriAddBlocker == true) {
         var f = $(event.target).attr("class");
-        f = Number(f.match(/\d+/));
-        clickCounter = f;
+        if (f != undefined) {
+            f = Number(f.match(/\d+/));
+            clickCounter = f;
+        }
     }
 });
 
