@@ -19,15 +19,15 @@ namespace Сountry_cottage_area
     {
         public Task SendAsync(IdentityMessage message)
         {
-            var from = "qwer12test@yandex.ru";
-            var pass = "ymbRpRTRU6QrfaM";
+            var from = "dachahby@dacha.2h.by";
+            var pass = "x10QdWoj97";
 
-            SmtpClient client = new SmtpClient("smtp.yandex.ru", 25)
+            SmtpClient client = new SmtpClient("v04.bizneshost.by", 25)
             {
                 DeliveryMethod = SmtpDeliveryMethod.Network,
                 UseDefaultCredentials = false,
                 Credentials = new System.Net.NetworkCredential(from, pass),
-                EnableSsl = true
+                EnableSsl = false
             };
 
             var mail = new MailMessage(from, message.Destination)
